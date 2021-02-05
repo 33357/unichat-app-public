@@ -1,10 +1,8 @@
 <!--
- * @Description: 
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:20:31
+ * @LastEditTime: 2021-02-05 16:09:47
  * @LastEditors: 33357
- * @Reference: 
 -->
 <template>
   <view>
@@ -64,9 +62,7 @@ export default {
       getState: "getState",
     }),
   },
-  /**
-   * @description:页面加载
-   */
+  //页面加载
   async onLoad(options) {
     try {
       const launchedRes = await this.$onLaunched;
@@ -82,9 +78,7 @@ export default {
 
   methods: {
     ...mapActions("businessCard", ["onload"]),
-    /**
-     * @description:跳转chat
-     */
+    //跳转chat
     goToChat() {},
   },
 };

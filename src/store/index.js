@@ -1,11 +1,10 @@
 /*
- * @Description:
- * @Author:   33357
+ * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:06:06
+ * @LastEditTime: 2021-02-05 16:22:04
  * @LastEditors: 33357
- * @Reference:
  */
+
 import Vue from 'vue';
 import Vuex from 'vuex';
 import HttpAPI from './net/httpAPI';
@@ -26,20 +25,14 @@ Vue.use(Vuex);
 Vue.use(uView);
 
 const CONST_DATA = {
-  /**
-   * @description: APP状态选择
-   */
+  //APP状态选择
   PRODUCTION: 'P',
-  /**
-   * @description: 正式发布使用的API接口
-   */
+  //正式发布使用的API接口
   P: {
     postUrl: '',
     socketUrl: '',
   },
-  /**
-   * @description: 测试使用的API接口
-   */
+  //测试使用的API接口
   T: {
     postUrl: '',
     socketUrl: '',
@@ -49,30 +42,20 @@ const CONST_DATA = {
 const $u = Vue.prototype.$u;
 const log = new Log({ toast: $u.toast });
 
-/**
-     * @description: 本地变量
-     */
+//本地变量
 const localData = {
   loadNum: null,
 };
 
 const store = new Vuex.Store({
   state: {
-    /**
-     * @description: 用户数据
-     */
+    //用户数据
     userData: {
-       /**
-       * @description: 钱包地址
-       */
+      //钱包地址
       walletAddress: null,
-       /**
-       * @description: 服务器上的用户地址
-       */
+      //服务器上的用户地址
       userAddress: null,
-      /**
-       * @description: 服务器保存的用户数据
-       */
+      //服务器保存的用户数据
       cloudSetting: {
         homeSetting: {
           chatSetting: {},
@@ -82,20 +65,14 @@ const store = new Vuex.Store({
           userTokenJson: {},
         },
       },
-      /**
-       * @description: 本地保存的用户数据
-       */
+      //本地保存的用户数据
       localSetting: {
         web3Provider: null,
       },
     },
-    /**
-     * @description: APP引用数据
-     */
+    //APP引用数据
     appData: {
-      /**
-       * @description:扩展函数
-       */
+      //扩展函数
       extend: {
         contractABI,
         math: new _Math({ vue: Vue }),
@@ -104,32 +81,24 @@ const store = new Vuex.Store({
         web3Provider,
         log,
       },
-      /**
-       * @description:网络函数
-       */
+      //网络函数
       net: {
         httpAPI: null,
         webSocket: null,
         web3: null,
       },
-      /**
-       * @description:状态Token
-       */
+      //状态Token
       token: {
         isStartApp: false,
         csrfToken: null,
       },
-      /**
-       * @description:默认设置
-       */
+      //默认设置
       setting: {
         getChatNumber: 100,
         chatLoadNumber: 20,
       },
     },
-    /**
-     * @description:网络加载数据
-     */
+    //网络加载数据
     loadingData: {
       defaultTokenArray: [],
       addressAvatarJson: {},
@@ -138,9 +107,7 @@ const store = new Vuex.Store({
     },
   },
   getters: {
-    /**
-     * @description: 获取state变量
-     */
+    // 获取state变量
     getState: (state) => {
       return {
         findFromDefaultTokenArray: ({ address }) => {
@@ -171,9 +138,7 @@ const store = new Vuex.Store({
         },
       };
     },
-    /**
-     * @description: 获取state变量处理的方法
-     */
+    // 获取state变量处理的方法
     getFunction: (state, getters) => {
       return {
         getBalanceString: ({ walletAddress, tokenAddress }) => {
@@ -202,9 +167,7 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
-     /**
-     * @description: 设置state变量
-     */
+    // 设置state变量
     setState: (state, { setJson, save = true }) => {
       state.appData.extend.math.setJson({
         objectJson: state,
@@ -237,9 +200,7 @@ const store = new Vuex.Store({
         }
       }
     },
-    /**
-     * @description: 减少本地变量loadNum
-     */
+    // 减少本地变量loadNum
     cutLoadNum: (state) => {
       if (localData.loadNum !== null) {
         localData.loadNum--;
@@ -255,9 +216,7 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    /**
-     * @description: App初始化
-     */
+    // App初始化
     startApp: async ({ state, commit, dispatch }) => {
       try {
         state.appData.extend.uniapp.load.show();
@@ -379,9 +338,7 @@ const store = new Vuex.Store({
         state.appData.extend.uniapp.load.hide();
       }
     },
-    /**
-     * @description: 检查并添加Token
-     */
+    // 检查并添加Token
     testAndAddToken: async (
       { state, getters, commit, dispatch },
       { tokenAddress, isSet = false }
@@ -463,9 +420,7 @@ const store = new Vuex.Store({
         state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description: 获取Token信息
-     */
+    // 获取Token信息
     getTokenMessage: async ({ state, getters, commit }, { tokenAddress }) => {
       const walletAddress = state.userData.userAddress;
       if (tokenAddress === ' ') {
@@ -545,9 +500,7 @@ const store = new Vuex.Store({
         return null;
       }
     },
-    /**
-     * @description: socket接收消息的回调函数
-     */
+    // socket接收消息的回调函数
     onMessageFunction: async ({ dispatch, state }, { req, data }) => {
       try {
         if (req.method === 'linkChat') {
@@ -570,9 +523,7 @@ const store = new Vuex.Store({
         state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description: 用户注销
-     */
+    // 用户注销
     userLogout: async ({ state, commit, dispatch }) => {
       await dispatch('home/userLogout');
       const userLogoutRes = await state.appData.net.httpAPI.userLogout();
@@ -591,9 +542,7 @@ const store = new Vuex.Store({
         throw { message: '登出失败！', log: { userLogoutRes } };
       }
     },
-    /**
-     * @description: 预加载消息头像
-     */
+    // 预加载消息头像
     setMessagesAvatar: async ({ state, commit }, { messages }) => {
       try {
         for (const i in messages) {
@@ -616,9 +565,7 @@ const store = new Vuex.Store({
         state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description: 预加载消息余额
-     */
+    // 预加载消息余额
     setMessagesBalance: async ({ state, getters, commit }, { messages }) => {
       try {
         for (const i in messages) {
@@ -664,9 +611,7 @@ const store = new Vuex.Store({
         state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description: 设置web3提供商
-     */
+    // 设置web3提供商
     setWeb3Provider: async ({ state, commit }, { web3Provider }) => {
       let web3;
       if (web3Provider === 'metamask') {

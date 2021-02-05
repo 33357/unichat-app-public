@@ -1,10 +1,8 @@
 <!--
- * @Description: 
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:19:39
+ * @LastEditTime: 2021-02-05 16:23:17
  * @LastEditors: 33357
- * @Reference: 
 -->
 <template>
   <view class="content">
@@ -55,9 +53,7 @@ export default {
   computed: {
     ...mapState("login/", []),
   },
-  /**
-   * @description:页面加载
-   */
+  //页面加载
   async onLoad(options) {
     try {
       const launchedRes = await this.$onLaunched;
@@ -72,9 +68,7 @@ export default {
   },
   methods: {
     ...mapActions("login/", ["userLogin", "onload"]),
-    /**
-     * @description:点击MetaMask
-     */
+    //点击MetaMask
     async clickMetaMask() {
       try {
         await this.userLogin({ web3Provider: "metamask" });
@@ -82,9 +76,7 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description:点击IMToken
-     */
+    //点击IMToken
     async clickIMToken() {
       try {
         await this.userLogin({ web3Provider: "imtoken" });

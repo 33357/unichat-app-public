@@ -1,10 +1,8 @@
 /*
- * @Description:
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:06:18
+ * @LastEditTime: 2021-02-05 16:21:37
  * @LastEditors: 33357
- * @Reference:
  */
 export const login = {
   namespaced: true,
@@ -12,9 +10,7 @@ export const login = {
   mutations: {},
   actions: {
     onload: async ({}, { options }) => {},
-    /**
-     * @description: 用户登录
-     */
+    // 用户登录
     userLogin: async ({ commit, rootState, dispatch }, { web3Provider }) => {
       await dispatch('setWeb3Provider', { web3Provider }, { root: true });
       const getWalletAddressRes = await rootState.appData.net.web3.getWalletAddress();

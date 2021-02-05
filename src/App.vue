@@ -1,16 +1,12 @@
 <!--
- * @Description: 
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:05:30
+ * @LastEditTime: 2021-02-05 16:22:24
  * @LastEditors: 33357
- * @Reference: 
 -->
 <script>
 export default {
-  /**
-   * @description:应用初始化
-   */
+  //应用初始化
   onLaunch: async function () {
     this.$store.state.appData.extend.log.getLog({ message: "应用启动" });
     uni.hideTabBar();

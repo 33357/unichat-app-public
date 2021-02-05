@@ -1,10 +1,8 @@
 /*
- * @Description:
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 13:54:56
+ * @LastEditTime: 2021-02-05 16:20:38
  * @LastEditors: 33357
- * @Reference:
  */
 const moment = require('moment');
 const ethUtil = require('ethereumjs-util');
@@ -14,9 +12,7 @@ class _Math {
   constructor({ vue }) {
     this.vue = vue;
   }
-  /**
-   * @description: 获取有效位数字
-   */
+  // 获取有效位数字
   getEffectiveNumber = ({ number, effNum }) => {
     if (number > Math.pow(10, effNum)) {
       return Math.floor(number);
@@ -28,9 +24,7 @@ class _Math {
       }
     }
   };
-  /**
-   * @description: 处理JSON
-   */
+  // 处理JSON
   setJson = ({ objectJson, setJson, func }) => {
     if (setJson.$set !== undefined) {
       for (let _key in setJson.$set) {
@@ -74,9 +68,7 @@ class _Math {
       }
     }
   };
-  /**
-   * @description: 获取JSON到
-   */
+  // 获取JSON到
   getJsonKeyByJsonStr = ({ json, str, vue = false }) => {
     const arr = str.split('.');
     for (let i = 0; i < arr.length - 1; i++) {
@@ -91,10 +83,7 @@ class _Math {
     }
     return { json, key: arr[arr.length - 1] };
   };
-  /**
-   * @description:是否是JSON
-   */
-
+  //是否是JSON
   isJson = (obj) => {
     let _isjson =
       typeof obj == 'object' &&
@@ -102,30 +91,22 @@ class _Math {
       !obj.length;
     return _isjson;
   };
-  /**
-   * @description: 是否是Array
-   */
+  // 是否是Array
   isArray = (obj) => {
     return Object.prototype.toString.call(obj) == '[object Array]';
   };
-  /**
-   * @description: 处理时间格式
-   */
+  // 处理时间格式
   getTime = () => {
     return moment().format('YYYY-MM-DD HH:mm:ss');
   };
-  /**
-   * @description:获取cookie
-   */
+  //获取cookie
   getCookie = (name) => {
     var arr,
       reg = new RegExp('(^| )' + name + '=([^;]*)(;|$)');
     if ((arr = document.cookie.match(reg))) return unescape(arr[2]);
     else return null;
   };
-  /**
-   * @description:余额格式处理
-   */
+  //余额格式处理
   getBalanceString = ({ balance, decimals, symbol, numDigits }) => {
     const res =
       this.getEffectiveNumber({
@@ -136,9 +117,7 @@ class _Math {
       symbol;
     return res;
   };
-  /**
-   * @description:eth工具
-   */
+  //eth工具
   ethTool = {
     intToHex: ({ int }) => {
       return ethjsUtil.intToHex(int);

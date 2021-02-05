@@ -1,10 +1,8 @@
 /*
- * @Description:
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 13:56:19
+ * @LastEditTime: 2021-02-05 16:21:17
  * @LastEditors: 33357
- * @Reference:
  */
 class UniApp {
   constructor({ $u, log }) {
@@ -12,10 +10,7 @@ class UniApp {
     this.log = log;
     this.loading = false;
   }
-
-  /**
-   * @description:request请求
-   */
+  //request请求
   request = ({ url, action, method, data = null }) => {
     return new Promise((resolve, reject) => {
       uni.request({
@@ -46,9 +41,7 @@ class UniApp {
       });
     });
   };
-  /**
-   * @description:显示modal
-   */
+  //显示modal
   modal = {
     short: ({ content }) => {
       this.$u.toast(content, 1500);
@@ -99,9 +92,7 @@ class UniApp {
       });
     },
   };
-  /**
-   * @description:跳转
-   */
+  //跳转
   go = {
     home: () => {
       return new Promise((resolve, reject) => {
@@ -180,9 +171,7 @@ class UniApp {
       });
     },
   };
-  /**
-   * @description:页面滑动
-   */
+  //页面滑动
   pageScrollTo = ({ scrollTop, duration }) => {
     return new Promise((resolve, reject) => {
       uni.pageScrollTo({
@@ -201,9 +190,7 @@ class UniApp {
       });
     });
   };
-  /**
-   * @description:停止下拉
-   */
+  //停止下拉
   stopPullDownRefresh = () => {
     return new Promise((resolve, reject) => {
       uni.stopPullDownRefresh({
@@ -220,9 +207,7 @@ class UniApp {
       });
     });
   };
-  /**
-   * @description:本地存储
-   */
+  //本地存储
   localStorage = {
     save: ({ key, data }) => {
       return new Promise((resolve, reject) => {
@@ -271,9 +256,7 @@ class UniApp {
       });
     },
   };
-  /**
-   * @description:加载显示
-   */
+  //加载显示
   load = {
     show: () => {
       this.loading = true;

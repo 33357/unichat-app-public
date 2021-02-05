@@ -1,25 +1,19 @@
 /*
- * @Description: 
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:06:25
+ * @LastEditTime: 2021-02-05 16:19:23
  * @LastEditors: 33357
- * @Reference: 
  */
 import { chat } from './chat.js';
 
 export const home = {
   namespaced: true,
   state: () => ({
-    /**
-     * @description: 用户聊天数据JSON
-     */
+    // 用户聊天数据JSON
     tokenChatJson: {},
   }),
   getters: {
-    /**
-     * @description: 获取state数据
-     */
+    // 获取state数据
     getState: (state) => {
       return {
         getTokenChatJsonMessages: ({ acceptAddress }) => {
@@ -31,9 +25,7 @@ export const home = {
         },
       };
     },
-    /**
-     * @description: 设置state数据函数
-     */
+    // 设置state数据函数
     getFunction: (state, getters, rootState) => {
       return {
         getUnreadNumber: ({ acceptAddress }) => {
@@ -66,9 +58,7 @@ export const home = {
     },
   },
   mutations: {
-    /**
-     * @description: 设置state变量
-     */
+    // 设置state变量
     setState: (state, { setJson, rootState }) => {
       rootState.appData.extend.math.setJson({
         objectJson: state,
@@ -83,17 +73,13 @@ export const home = {
     },
   },
   actions: {
-    /**
-     * @description: home初始化
-     */
+    // home初始化
     onload: async ({ rootState, dispatch }, { options }) => {
-      if(rootState.appData.extend.uniapp.loading===true){
-        rootState.appData.extend.uniapp.load.show()
+      if (rootState.appData.extend.uniapp.loading === true) {
+        rootState.appData.extend.uniapp.load.show();
       }
     },
-    /**
-     * @description: 发送连接消息的请求
-     */
+    // 发送连接消息的请求
     linkChat: async ({ rootState, state, commit }, { acceptAddress }) => {
       try {
         if (state.tokenChatJson[acceptAddress] === undefined) {
@@ -135,9 +121,7 @@ export const home = {
         rootState.appData.extend.log.get({ err });
       }
     },
-    /**
-     * @description: 收到连接消息的信息
-     */
+    // 收到连接消息的信息
     getLinkChat: async (
       { dispatch, commit, rootState },
       { acceptAddress, messages }
@@ -156,9 +140,7 @@ export const home = {
       });
       await dispatch('chat/getLinkChat', { acceptAddress, messages });
     },
-    /**
-     * @description: 收到发送消息的信息
-     */
+    // 收到发送消息的信息
     getSendChat: async (
       { rootState, commit, state, dispatch },
       { acceptAddress, messages }
@@ -189,9 +171,7 @@ export const home = {
       }
       await dispatch('chat/getSendChat', { acceptAddress, messages });
     },
-    /**
-     * @description: 收到获取消息的信息
-     */
+    // 收到获取消息的信息
     getGetChat: async (
       { dispatch, commit, rootState, state },
       { acceptAddress, messages }
@@ -210,9 +190,7 @@ export const home = {
       });
       await dispatch('chat/getGetChat', { acceptAddress, messages });
     },
-    /**
-     * @description: 消息卡片置顶
-     */
+    // 消息卡片置顶
     setTopChat: async ({ rootState, state, commit }, { acceptAddress }) => {
       if (state.tokenChatJson[acceptAddress].top === false) {
         commit('setState', {
@@ -223,7 +201,7 @@ export const home = {
           },
           rootState,
         });
-        setTimeout(function() {
+        setTimeout(function () {
           commit('setState', {
             setJson: {
               $vueSet: JSON.parse(
@@ -254,7 +232,7 @@ export const home = {
           },
           rootState,
         });
-        setTimeout(function() {
+        setTimeout(function () {
           commit('setState', {
             setJson: {
               $vueSet: JSON.parse(
@@ -278,9 +256,7 @@ export const home = {
         );
       }
     },
-    /**
-     * @description: 消息卡片打开
-     */
+    // 消息卡片打开
     openChat: async ({ rootState, state, commit }, { acceptAddress }) => {
       commit('setState', {
         setJson: {
@@ -299,9 +275,7 @@ export const home = {
         }
       }
     },
-    /**
-     * @description: 删除消息卡片
-     */
+    // 删除消息卡片
     deleteChat: async ({ rootState, commit }, { acceptAddress }) => {
       commit('setState', {
         setJson: {
@@ -326,9 +300,7 @@ export const home = {
       rootState.appData.extend.uniapp.modal.short({ content: '删除成功！' });
       rootState.appData.net.webSocket.unlinkChat({ acceptAddress });
     },
-    /**
-     * @description: 增加消息卡片
-     */
+    // 增加消息卡片
     addChat: async ({ rootState, dispatch, commit }, { tokenAddress }) => {
       if (
         !rootState.appData.extend.math.ethTool.isEthAddress({
@@ -379,22 +351,17 @@ export const home = {
         rootState.appData.extend.uniapp.modal.short({ content: '添加成功！' });
       }
     },
-    /**
-     * @description: 用户注销
-     */
-    userLogout: async ({ state, rootState,commit }) => {
+    // 用户注销
+    userLogout: async ({ state, rootState, commit }) => {
       for (const key in state.tokenChatJson) {
         rootState.appData.net.webSocket.unlinkChat({ acceptAddress: key });
       }
-      commit(
-        'setState',
-        {
-          setJson: {
-            $vueSet:{ tokenChatJson:{}},
-          },
-          rootState,
-        }
-      ); 
+      commit('setState', {
+        setJson: {
+          $vueSet: { tokenChatJson: {} },
+        },
+        rootState,
+      });
     },
   },
   modules: {

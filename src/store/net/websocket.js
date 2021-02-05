@@ -1,10 +1,8 @@
 /*
- * @Description:
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:03:59
+ * @LastEditTime: 2021-02-05 16:16:30
  * @LastEditors: 33357
- * @Reference:
  */
 const io = require('weapp.socket.io');
 
@@ -17,9 +15,7 @@ class WebSocket {
     this.sendDataArray = [];
     this.onMessageFunction = onMessageFunction;
   }
-  /**
-   * @description:socket连接
-   */
+  //socket连接
   connect = () => {
     this.socket = io('https://' + this.socketUrl);
     this.socket.on('connect', () => {
@@ -76,9 +72,7 @@ class WebSocket {
       this.onMessageFunction(res);
     });
   };
-  /**
-   * @description:socket发送
-   */
+  //socket发送
   send = ({ method, data }) => {
     if (this.isConnected) {
       this.log.getLog({ message: 'websocket发送消息', log: { method, data } });
@@ -91,37 +85,28 @@ class WebSocket {
       this.sendDataArray.push({ method, data });
     }
   };
-
-  /**
-   * @description:连接消息
-   */
+  //连接消息
   linkChat = ({ acceptAddress, skip, limit }) => {
     this.send({
       method: 'linkChat',
       data: { acceptAddress, skip, limit },
     });
   };
-  /**
-   * @description:发送消息
-   */
+  //发送消息
   sendChat = ({ chatContent, acceptAddress }) => {
     this.send({
       method: 'sendChat',
       data: { chatContent, acceptAddress },
     });
   };
-  /**
-   * @description:获取消息
-   */
+  //获取消息
   getChat = ({ acceptAddress, skip, limit }) => {
     this.send({
       method: 'getChat',
       data: { acceptAddress, skip, limit },
     });
   };
-  /**
-   * @description:断开消息
-   */
+  //断开消息
   unlinkChat = ({ acceptAddress }) => {
     this.send({
       method: 'unlinkChat',

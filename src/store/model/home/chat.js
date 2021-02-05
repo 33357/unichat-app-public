@@ -1,56 +1,34 @@
 /*
- * @Description:
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 13:49:31
+ * @LastEditTime: 2021-02-05 16:21:28
  * @LastEditors: 33357
- * @Reference:
  */
 export const chat = {
   namespaced: true,
   state: () => ({
-    /**
-     * @description: 消息是否加载完
-     */
+    // 消息是否加载完
     loadAll: false,
-    /**
-     * @description: 消息是否获取完
-     */
+    // 消息是否获取完
     getAll: false,
-    /**
-     * @description: 消息加载数量
-     */
+    // 消息加载数量
     loadNumber: 0,
-    /**
-     * @description: 接收地址
-     */
+    // 接收地址
     acceptAddress: null,
-    /**
-     * @description: 获取到自己发的消息
-     */
+    // 获取到自己发的消息
     getOwnSendChat: 0,
-    /**
-     * @description: 获取到别人发的消息
-     */
+    // 获取到别人发的消息
     getOtherSendChat: 0,
-    /**
-     * @description: 页面消息数组
-     */
+    // 页面消息数组
     messages: [],
-    /**
-     * @description: 获取到消息的数量
-     */
+    // 获取到消息的数量
     getMessageNumber: 0,
-    /**
-     * @description: 收到获取的消息
-     */
+    // 收到获取的消息
     getGetChat: 0,
   }),
   getters: {},
   mutations: {
-    /**
-     * @description: 设置state变量
-     */
+    // 设置state变量
     setState: (state, { setJson, rootState }) => {
       rootState.appData.extend.math.setJson({
         objectJson: state,
@@ -65,9 +43,7 @@ export const chat = {
     },
   },
   actions: {
-    /**
-     * @description: chat初始化
-     */
+    // chat初始化
     onload: async (
       { commit, rootGetters, rootState, state, dispatch },
       { options }
@@ -141,9 +117,7 @@ export const chat = {
         }
       }
     },
-    /**
-     * @description: chat页面注销
-     */
+    // chat页面注销
     onunload: async ({ commit, rootState, state }) => {
       if (state.messages.length !== 0) {
         const historyTime =
@@ -188,18 +162,14 @@ export const chat = {
         rootState,
       });
     },
-    /**
-     * @description: 发送消息
-     */
+    // 发送消息
     sendMessage: async ({ state, rootState }, { chatContent }) => {
       rootState.appData.net.webSocket.sendChat({
         chatContent,
         acceptAddress: state.acceptAddress,
       });
     },
-    /**
-     * @description: 获取消息
-     */
+    // 获取消息
     getMessage: async ({ state, rootState, rootGetters, commit }, { wait }) => {
       const messages = rootGetters['home/getState'].getTokenChatJsonMessages({
         acceptAddress: state.acceptAddress,
@@ -247,16 +217,12 @@ export const chat = {
         });
       }
     },
-    /**
-     * @description: 收到连接消息的信息
-     */
+    // 收到连接消息的信息
     getLinkChat: async (
       { commit, rootState, state },
       { acceptAddress, messages }
     ) => {},
-    /**
-     * @description: 收到获取消息的信息
-     */
+    // 收到获取消息的信息
     getGetChat: async (
       { commit, state, rootState, dispatch },
       { acceptAddress, messages }
@@ -271,9 +237,7 @@ export const chat = {
         await dispatch('getMessage', { wait: false });
       }
     },
-    /**
-     * @description: 收到发送消息的信息
-     */
+    // 收到发送消息的信息
     getSendChat: async (
       { commit, state, rootState, rootGetters },
       { acceptAddress, messages }

@@ -1,17 +1,14 @@
 /*
- * @Description: 
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:07:53
+ * @LastEditTime: 2021-02-05 16:07:20
  * @LastEditors: 33357
- * @Reference: 
  */
 page {
   background-color: #f3f3f3;
 }
-/**
-     * @description:消息内容显示
-     */
+
+//消息内容显示
 .content {
   &-showfn {
     padding-bottom: 0rpx;

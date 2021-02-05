@@ -1,10 +1,8 @@
 <!--
- * @Description: 
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:23:15
+ * @LastEditTime: 2021-02-05 16:23:27
  * @LastEditors: 33357
- * @Reference: 
 -->
 <template>
   <view class="content">
@@ -240,9 +238,7 @@ export default {
       getHomeFunction: "home/getFunction",
     }),
   },
-  /**
-   * @description:页面加载
-   */
+  //页面加载
   async onLoad(options) {
     try {
       const launchedRes = await this.$onLaunched;
@@ -264,9 +260,7 @@ export default {
       openChat: "home/openChat",
       userLogout: "userLogout",
     }),
-    /**
-     * @description:确认modal
-     */
+    //确认modal
     async confirmModal() {
       try {
         if (this.modelMethod === "deleteChat") {
@@ -285,9 +279,7 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description:点击消息卡片
-     */
+    //点击消息卡片
     async clickSwipeAction(index, index1) {
       try {
         this.$store.state.appData.extend.log.getLog({
@@ -307,9 +299,7 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description:打开消息卡片
-     */
+    //打开消息卡片
     async openSwipeAction(index) {
       try {
         this.$store.state.appData.extend.log.getLog({
@@ -321,9 +311,7 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description:点击导航栏按钮
-     */
+    //点击导航栏按钮
     async onNavigationBarButtonTap({ index }) {
       try {
         this.$store.state.appData.extend.log.getLog({
@@ -337,9 +325,7 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description:跳转chat
-     */
+    //跳转chat
     async goToChat({ acceptAddress }) {
       try {
         await this.$store.state.appData.extend.uniapp.go.to({
@@ -352,9 +338,7 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description:点击弹窗
-     */
+    //点击弹窗
     async checkSelect(index) {
       try {
         this.$store.state.appData.extend.log.getLog({
@@ -371,9 +355,7 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    /**
-     * @description:设置modal
-     */
+    //设置modal
     setModal({ method, data = null }) {
       if (method === "deleteChat") {
         this.modelMethod = "deleteChat";

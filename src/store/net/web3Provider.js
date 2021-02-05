@@ -1,19 +1,15 @@
 /*
- * @Description:
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 14:02:45
+ * @LastEditTime: 2021-02-05 16:21:50
  * @LastEditors: 33357
- * @Reference:
  */
 class _Web3 {
   constructor({ web3, erc20ABI }) {
     this.web3 = web3;
     this.erc20ABI = erc20ABI;
   }
-  /**
-   * @description:获取Eth余额
-   */
+  //获取Eth余额
   getEthBalance = ({ walletAddress }) => {
     return new Promise((resolve, reject) => {
       this.web3.eth.getBalance(walletAddress, function (err, res) {
@@ -30,9 +26,7 @@ class _Web3 {
       });
     });
   };
-  /**
-   * @description:获取Erc20余额
-   */
+  //获取Erc20余额
   getErc20Balance = ({ contractAddress, walletAddress }) => {
     return new Promise((resolve, reject) => {
       try {
@@ -58,9 +52,7 @@ class _Web3 {
       }
     });
   };
-  /**
-   * @description:获取Erc20名称
-   */
+  //获取Erc20名称
   getErc20Name = ({ contractAddress }) => {
     return new Promise((resolve, reject) => {
       try {
@@ -84,9 +76,7 @@ class _Web3 {
       }
     });
   };
-  /**
-   * @description:获取Erc20标识
-   */
+  //获取Erc20标识
   getErc20Symbol = ({ contractAddress }) => {
     return new Promise((resolve, reject) => {
       try {
@@ -110,9 +100,7 @@ class _Web3 {
       }
     });
   };
-  /**
-   * @description:获取Erc20小数位数
-   */
+  //获取Erc20小数位数
   getErc20Decimals = ({ contractAddress }) => {
     return new Promise((resolve, reject) => {
       try {
@@ -136,9 +124,7 @@ class _Web3 {
       }
     });
   };
-  /**
-   * @description:获取Erc20总量
-   */
+  //获取Erc20总量
   getErc20TotalSupply = ({ contractAddress }) => {
     return new Promise((resolve, reject) => {
       try {
@@ -162,9 +148,7 @@ class _Web3 {
       }
     });
   };
-  /**
-   * @description:是否是合约
-   */
+  //是否是合约
   isContract = ({ address }) => {
     const code = this.web3.eth.getCode(address);
     if (code == '0x') {
@@ -198,9 +182,7 @@ class MetaMask {
       };
     }
   }
-  /**
-   * @description:ethRequest
-   */
+  //ethRequest
   ethRequest = ({ method, params }) => {
     return new Promise((resolve, reject) => {
       if (this.chainId == 0x1) {
@@ -226,9 +208,7 @@ class MetaMask {
       }
     });
   };
-  /**
-   * @description:contractCall
-   */
+  //contractCall
   contractCall = async ({ methodStr, contractAddress, addData = '' }) => {
     let res = await this.ethRequest({
       method: 'web3_sha3',
@@ -245,9 +225,7 @@ class MetaMask {
     });
     return { contractCallData: res['ethRequestData'] };
   };
-  /**
-   * @description:获取链ID
-   */
+  //获取链ID
   getChainId = async () => {
     const res = await this.ethRequest({
       method: 'eth_chainId',
@@ -255,9 +233,7 @@ class MetaMask {
     });
     return { chainId: res['ethRequestData'] };
   };
-  /**
-   * @description:获取钱包地址
-   */
+  //获取钱包地址
   getWalletAddress = async () => {
     const res = await this.ethRequest({ method: 'eth_requestAccounts' });
     return {
@@ -266,9 +242,7 @@ class MetaMask {
       }),
     };
   };
-  /**
-   * @description:登录签名
-   */
+  //登录签名
   signLogin = async ({ walletAddress, signData }) => {
     const msgParams = JSON.stringify(signData);
     let params = [walletAddress, msgParams];
@@ -282,9 +256,7 @@ class MetaMask {
       walletAddress,
     };
   };
-  /**
-   * @description:获取Eth余额
-   */
+  //获取Eth余额
   getEthBalance = async function ({ walletAddress }) {
     const res = await this.ethRequest({
       method: 'eth_getBalance',
@@ -294,9 +266,7 @@ class MetaMask {
       ethBalance: this.ethTool.hexToInt({ hex: res['ethRequestData'] }),
     };
   };
-  /**
-   * @description:获取Erc20余额
-   */
+  //获取Erc20余额
   getErc20Balance = async function ({ contractAddress, walletAddress }) {
     const res = await this.contractCall({
       methodStr: 'balanceOf(address)',
@@ -310,9 +280,7 @@ class MetaMask {
       erc20Balance: this.ethTool.hexToInt({ hex: res['contractCallData'] }),
     };
   };
-  /**
-   * @description:获取Erc20总量
-   */
+  //获取Erc20总量
   getErc20TotalSupply = async function ({ contractAddress }) {
     const res = await this.contractCall({
       methodStr: 'totalSupply()',
@@ -322,9 +290,7 @@ class MetaMask {
       erc20TotalSupply: this.ethTool.hexToInt({ hex: res['contractCallData'] }),
     };
   };
-  /**
-   * @description:获取Erc20小数位数
-   */
+  //获取Erc20小数位数
   getErc20Decimals = async function ({ contractAddress }) {
     const res = await this.contractCall({
       methodStr: 'decimals()',
@@ -334,9 +300,7 @@ class MetaMask {
       erc20Decimals: this.ethTool.hexToInt({ hex: res['contractCallData'] }),
     };
   };
-  /**
-   * @description:获取Erc20名称
-   */
+  //获取Erc20名称
   getErc20Name = async function ({ contractAddress }) {
     const res = await this.contractCall({
       methodStr: 'name()',
@@ -346,9 +310,7 @@ class MetaMask {
       erc20Name: this.ethTool.hexToAscii({ hex: res['contractCallData'] }),
     };
   };
-  /**
-   * @description:获取Erc20标识
-   */
+  //获取Erc20标识
   getErc20Symbol = async function ({ contractAddress }) {
     const res = await this.contractCall({
       methodStr: 'symbol()',
@@ -358,9 +320,7 @@ class MetaMask {
       erc20Symbol: this.ethTool.hexToAscii({ hex: res['contractCallData'] }),
     };
   };
-  /**
-   * @description:是否是合约
-   */
+  //是否是合约
   isContract = async function ({ address }) {
     const res = await this.ethRequest({
       method: 'eth_getCode',
@@ -372,9 +332,7 @@ class MetaMask {
       return { isContract: true };
     }
   };
-  /**
-   * @description:添加0
-   */
+  //添加0
   addZero({ str, num }) {
     let _str = '';
     for (let i = 0; i < num; i++) {
@@ -398,9 +356,7 @@ class IMToken {
         message: '不是ETH主网！',
       });
     }
-    /**
-     * @description:方法引用
-     */
+    //方法引用
     this.getWalletAddress = this.metamask.getWalletAddress;
     this.signLogin = this.metamask.signLogin;
     this.getEthBalance = this.web3.getEthBalance;

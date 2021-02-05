@@ -1,15 +1,12 @@
 /*
- * @Description: 
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 13:50:27
+ * @LastEditTime: 2021-02-05 16:19:46
  * @LastEditors: 33357
  * @Reference: 
  */
 
-/**
- * @description: erc20ABI
- */
+ // erc20ABI
 const erc20ABI = [
   {
     constant: true,
