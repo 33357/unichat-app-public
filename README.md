@@ -1,7 +1,7 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:37
- * @LastEditTime: 2021-02-05 22:24:00
+ * @LastEditTime: 2021-02-05 22:24:40
  * @LastEditors: 33357
 -->
 
@@ -22,11 +22,11 @@ unichat App端开源信息
 
 ## 项目背景
 
-想要了解unichat项目详细信息请访问：[unichat-public](https://github.com/33357/unichat-public)
+想要了解unichat项目背景请访问：[unichat-public](https://github.com/33357/unichat-public)
 
 ## 相关项目
 
-想要了解相关项目信息请访问：[unichat-public](https://github.com/33357/unichat-public)
+想要了解相关项目请访问：[unichat-public](https://github.com/33357/unichat-public)
 
 ## 安装说明
 
