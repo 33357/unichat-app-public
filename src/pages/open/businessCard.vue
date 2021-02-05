@@ -1,22 +1,33 @@
+<!--
+ * @Description: 
+ * @Author: 33357
+ * @Date: 2021-02-05 13:15:36
+ * @LastEditTime: 2021-02-05 14:20:31
+ * @LastEditors: 33357
+ * @Reference: 
+-->
 <template>
   <view>
-    <view class="userinfo" v-if="address!==null">
+    <view class="userinfo" v-if="address !== null">
       <image :src="getState.getAddressAvatar({ address })" class="img"></image>
       <view class="userinfo-desc">
-        <view class="userinfo-desc-name">{{ address.substring(0,5)+'...'+address.substring(37) }}</view>
+        <view class="userinfo-desc-name">{{
+          address.substring(0, 5) + "..." + address.substring(37)
+        }}</view>
         <view class="userinfo-desc-gray"
-          ><view>ETH地址：{{ address.substring(0,25) }}</view>
+          ><view>ETH地址：{{ address.substring(0, 25) }}</view>
           <view>{{ address.substring(25) }}</view>
-          </view
-        >
+        </view>
       </view>
     </view>
     <view class="perch"></view>
     <u-cell-group>
       <!-- <u-cell-item title="朋友圈" label="模拟数据暂不支持查看好友朋友圈" hover-class="none" :title-style="{ marginLeft: '10rpx' }"></u-cell-item> -->
       <u-link :href="'https://cn.etherscan.com/address/' + address">
-        
-        <u-cell-item title="在ETHERSCAN上查看" :title-style="{ marginLeft: '20rpx' }">
+        <u-cell-item
+          title="在ETHERSCAN上查看"
+          :title-style="{ marginLeft: '20rpx' }"
+        >
           <u-icon slot="icon" name="zhuanfa" color="#36648B" size="32"></u-icon>
         </u-cell-item>
       </u-link>
@@ -53,7 +64,9 @@ export default {
       getState: "getState",
     }),
   },
-
+  /**
+   * @description:页面加载
+   */
   async onLoad(options) {
     try {
       const launchedRes = await this.$onLaunched;
@@ -69,7 +82,9 @@ export default {
 
   methods: {
     ...mapActions("businessCard", ["onload"]),
-
+    /**
+     * @description:跳转chat
+     */
     goToChat() {},
   },
 };

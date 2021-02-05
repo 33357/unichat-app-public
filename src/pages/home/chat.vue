@@ -1,5 +1,14 @@
+<!--
+ * @Description: 
+ * @Author: 33357
+ * @Date: 2021-02-05 13:15:36
+ * @LastEditTime: 2021-02-05 14:12:34
+ * @LastEditors: 33357
+ * @Reference: 
+-->
 <template>
   <view class="content">
+    <!-- 消息框 -->
     <view class="content-box" @touchstart="viewTouchstart" id="content-box">
       <block v-if="messages !== undefined">
         <u-loadmore
@@ -33,7 +42,7 @@
         </view>
       </block>
     </view>
-
+<!-- 输入框 -->
     <view class="input-box" id="input-box">
       <view class="input-box-flex">
         <view class="input-box-flex-grow">
@@ -97,6 +106,9 @@ export default {
     }),
   },
   watch: {
+    /**
+     * @description:监视收到自己发送的消息
+     */
     getOwnSendChat() {
       try {
         this.buttonLoading = false;
@@ -112,6 +124,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
+    /**
+     * @description:监视收到别人发送的消息
+     */
     getOtherSendChat() {
       try {
         if (this.down) {
@@ -126,6 +141,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
+    /**
+     * @description:监视收到获取消息的信息
+     */
     getGetChat() {
       try {
         if (this.loadMoreState === "loading") {
@@ -145,6 +163,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
+    /**
+     * @description:监视页面下拉
+     */
     async top(newValue, oldValue) {
       try {
         if (oldValue === false && newValue === true) {
@@ -161,6 +182,9 @@ export default {
       }
     },
   },
+  /**
+     * @description:页面加载
+     */
   async onLoad(options) {
     try {
       const launchedRes = await this.$onLaunched;
@@ -183,6 +207,9 @@ export default {
       this.$store.state.appData.extend.log.getErr(err);
     }
   },
+  /**
+     * @description:页面准备
+     */
   async onReady() {
     try {
       this.$store.state.appData.extend.log.getLog({ message: "页面准备" });
@@ -192,6 +219,9 @@ export default {
       this.$store.state.appData.extend.log.getErr(err);
     }
   },
+  /**
+     * @description:页面下划
+     */
   async onPageScroll(e) {
     try {
       const clientHeight = document.getElementById("content-box").clientHeight;
@@ -209,6 +239,9 @@ export default {
       this.$store.state.appData.extend.log.getErr(err);
     }
   },
+  /**
+     * @description:点击导航栏按钮
+     */
   async onNavigationBarButtonTap({ index }) {
     try {
       this.$store.state.appData.extend.log.getLog({
@@ -222,6 +255,9 @@ export default {
       this.$store.state.appData.extend.log.getErr(err);
     }
   },
+  /**
+     * @description:页面注销
+     */
   async onUnload() {
     try {
       this.$store.state.appData.extend.log.getLog({ message: "页面注销" });
@@ -237,7 +273,9 @@ export default {
       "getMessage",
       "onunload",
     ]),
-
+/**
+     * @description:发送消息
+     */
     async sendMsg() {
       try {
         if (!this.$u.trim(this.inputValue)) {
@@ -250,7 +288,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    //用户触摸屏幕的时候隐藏键盘
+    /**
+     * @description:用户触摸屏幕的时候隐藏键盘
+     */
     async viewTouchstart() {
       try {
         uni.hideKeyboard();
@@ -258,7 +298,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    // userid 用户id
+    /**
+     * @description:跳转BusinessCard
+     */
     async goToBusinessCard({ address }) {
       try {
         await this.$store.state.appData.extend.uniapp.go.to({

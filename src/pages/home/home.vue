@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: 33357
+ * @Date: 2021-02-05 13:15:36
+ * @LastEditTime: 2021-02-05 14:23:15
+ * @LastEditors: 33357
+ * @Reference: 
+-->
 <template>
   <view class="content">
     <selectInput
@@ -18,7 +26,7 @@
         <u-input v-model="modalInput" type="text" :clearable="false" focus />
       </view>
     </u-modal>
-
+    <!-- 置顶消息卡片 -->
     <u-swipe-action
       :show="value === null ? false : value.show"
       v-for="(value, key) in tokenChatJson"
@@ -84,6 +92,7 @@
       </block>
     </u-swipe-action>
     <view>
+      <!-- 非置顶消息卡片 -->
       <u-swipe-action
         :show="value === null ? false : value.show"
         v-for="(value, key) in tokenChatJson"
@@ -127,10 +136,12 @@
                 <view class="u-line-1">{{
                   value.messages === undefined || value.messages.length === 0
                     ? "无消息"
-                    : value.messages[value.messages.length - 1].sendAddress===userAddress?
-                      value.messages[
+                    : value.messages[value.messages.length - 1].sendAddress ===
+                      userAddress
+                    ? value.messages[
                         value.messages.length - 1
-                      ].chatContent.text.substring(0, 15):getFunction.getBalanceString({
+                      ].chatContent.text.substring(0, 15)
+                    : getFunction.getBalanceString({
                         walletAddress:
                           value.messages[value.messages.length - 1].sendAddress,
                         tokenAddress: key,
@@ -229,6 +240,9 @@ export default {
       getHomeFunction: "home/getFunction",
     }),
   },
+  /**
+   * @description:页面加载
+   */
   async onLoad(options) {
     try {
       const launchedRes = await this.$onLaunched;
@@ -241,9 +255,6 @@ export default {
       this.$store.state.appData.extend.log.getErr(err);
     }
   },
-  async onShow(){
-
-  },
   methods: {
     ...mapActions({
       onload: "home/onload",
@@ -253,7 +264,9 @@ export default {
       openChat: "home/openChat",
       userLogout: "userLogout",
     }),
-
+    /**
+     * @description:确认modal
+     */
     async confirmModal() {
       try {
         if (this.modelMethod === "deleteChat") {
@@ -272,7 +285,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    //action 点击事件
+    /**
+     * @description:点击消息卡片
+     */
     async clickSwipeAction(index, index1) {
       try {
         this.$store.state.appData.extend.log.getLog({
@@ -292,7 +307,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    //action 打开事件
+    /**
+     * @description:打开消息卡片
+     */
     async openSwipeAction(index) {
       try {
         this.$store.state.appData.extend.log.getLog({
@@ -304,7 +321,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    //点击导航栏自定义按钮
+    /**
+     * @description:点击导航栏按钮
+     */
     async onNavigationBarButtonTap({ index }) {
       try {
         this.$store.state.appData.extend.log.getLog({
@@ -318,7 +337,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    //跳转
+    /**
+     * @description:跳转chat
+     */
     async goToChat({ acceptAddress }) {
       try {
         await this.$store.state.appData.extend.uniapp.go.to({
@@ -331,10 +352,12 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-    //弹窗
+    /**
+     * @description:点击弹窗
+     */
     async checkSelect(index) {
       try {
-          this.$store.state.appData.extend.log.getLog({
+        this.$store.state.appData.extend.log.getLog({
           message: "点击弹窗",
           log: { index },
         });
@@ -348,7 +371,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-
+    /**
+     * @description:设置modal
+     */
     setModal({ method, data = null }) {
       if (method === "deleteChat") {
         this.modelMethod = "deleteChat";

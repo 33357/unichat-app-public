@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: 33357
+ * @Date: 2021-02-05 13:15:36
+ * @LastEditTime: 2021-02-05 14:19:39
+ * @LastEditors: 33357
+ * @Reference: 
+-->
 <template>
   <view class="content">
     <view class="status_bar"></view>
@@ -8,7 +16,11 @@
         size="large"
       ></u-avatar>
       <view class="content_body_btn">
-        <u-button :ripple="true" type="success" @click="clickMetaMask()" size="medium"
+        <u-button
+          :ripple="true"
+          type="success"
+          @click="clickMetaMask()"
+          size="medium"
           >METAMASK登录</u-button
         >
       </view>
@@ -30,7 +42,9 @@
       </view>
     </view>
     <view class="u-flex u-row-around safe-area-inset-bottom content_footer">
-      <u-link href="https://www.unichat.top" :under-line="true">关于UniChat</u-link>
+      <u-link href="https://www.unichat.top" :under-line="true"
+        >关于UniChat</u-link
+      >
     </view>
   </view>
 </template>
@@ -41,6 +55,9 @@ export default {
   computed: {
     ...mapState("login/", []),
   },
+  /**
+   * @description:页面加载
+   */
   async onLoad(options) {
     try {
       const launchedRes = await this.$onLaunched;
@@ -55,7 +72,9 @@ export default {
   },
   methods: {
     ...mapActions("login/", ["userLogin", "onload"]),
-
+    /**
+     * @description:点击MetaMask
+     */
     async clickMetaMask() {
       try {
         await this.userLogin({ web3Provider: "metamask" });
@@ -63,7 +82,9 @@ export default {
         this.$store.state.appData.extend.log.getErr(err);
       }
     },
-
+    /**
+     * @description:点击IMToken
+     */
     async clickIMToken() {
       try {
         await this.userLogin({ web3Provider: "imtoken" });
