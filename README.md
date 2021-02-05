@@ -1,10 +1,11 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:37
- * @LastEditTime: 2021-02-05 16:23:51
+ * @LastEditTime: 2021-02-05 20:01:23
  * @LastEditors: 33357
 -->
-# unichat-app
+# unichat-app-public
+unichat的App端开源代码
 
 ## Project setup
 ```
