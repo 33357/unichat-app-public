@@ -1,0 +1,62 @@
+{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "UniChat",
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+								"fontSrc": "/static/iconfont/uni.ttf",
+								"text": "\ue409",
+								"width": "30px",
+								"fontSize": "22px",
+								"color": "#000000"
+							}
+						]
+					}
+				}
+			}
+		},{
+			"path": "pages/open/login",
+			"style": {
+				"navigationBarTitleText": "登录UniChat"
+			}
+		},{
+			"path": "pages/home/chat"
+		},
+		{
+            "path" : "pages/open/businessCard",
+            "style" : {
+				"navigationBarTitleText": "名片",
+				"app-plus": {
+					"titleNView": {
+						"backgroundColor":"#FFFFFF"
+					}
+				}
+			}
+        }
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#00aa00",
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"list": [{
+				"pagePath": "pages/chat/index",
+				"iconPath": "static/image/page/wechat.png",
+				"selectedIconPath": "static/image/page/wechat_hl.png",
+				"text": "unichat"
+			}
+		]
+	}
+}
