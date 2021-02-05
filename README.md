@@ -1,13 +1,13 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:37
- * @LastEditTime: 2021-02-05 22:18:03
+ * @LastEditTime: 2021-02-05 22:24:00
  * @LastEditors: 33357
 -->
 
 # unichat-app-public
 
-unichat的App端开源信息
+unichat App端开源信息
 
 ## 目录
 
