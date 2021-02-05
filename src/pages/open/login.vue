@@ -1,7 +1,7 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:36
- * @LastEditTime: 2021-02-05 16:23:17
+ * @LastEditTime: 2021-02-05 22:37:25
  * @LastEditors: 33357
 -->
 <template>
@@ -40,7 +40,7 @@
       </view>
     </view>
     <view class="u-flex u-row-around safe-area-inset-bottom content_footer">
-      <u-link href="https://www.unichat.top" :under-line="true"
+      <u-link href="" :under-line="true"
         >关于UniChat</u-link
       >
     </view>
