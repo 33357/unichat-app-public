@@ -1,7 +1,7 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:37
- * @LastEditTime: 2021-02-06 10:15:59
+ * @LastEditTime: 2021-02-06 10:25:52
  * @LastEditors: 33357
 -->
 
@@ -110,4 +110,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 开源协议
 
-[MIT](LICENSE) © Richard Littauer
+[MIT](LICENSE)
