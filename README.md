@@ -1,7 +1,7 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:37
- * @LastEditTime: 2021-02-06 11:02:55
+ * @LastEditTime: 2021-02-06 11:04:06
  * @LastEditors: 33357
 -->
 
@@ -112,7 +112,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 加入贡献
 
-暂不支持加入贡献，但可以发起讨论。
+暂不支持加入贡献，但欢迎发起讨论。
 
 ## 开源协议
 
