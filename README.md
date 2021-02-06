@@ -1,7 +1,7 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:37
- * @LastEditTime: 2021-02-05 22:24:40
+ * @LastEditTime: 2021-02-06 09:41:13
  * @LastEditors: 33357
 -->
 
@@ -16,7 +16,7 @@ unichat App端开源信息
 - [安装说明](#安装说明)
 - [使用说明](#使用说明)
 - [额外信息](#额外信息)
-- [维护者](#维护者)
+- [维护成员](#维护成员)
 - [加入贡献](#加入贡献)
 - [开源许可](#开源许可)
 
@@ -51,7 +51,7 @@ npm run build:h5
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## 维护者
+## 维护成员
 
 [@33357](https://github.com/33357)
 
