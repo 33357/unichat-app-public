@@ -1,7 +1,7 @@
 <!--
  * @Author: 33357
  * @Date: 2021-02-05 13:15:37
- * @LastEditTime: 2021-02-06 10:42:12
+ * @LastEditTime: 2021-02-06 11:02:55
  * @LastEditors: 33357
 -->
 
@@ -31,6 +31,7 @@ unichat App端开源信息
 
 ## 项目结构
 
+```
 unichat-app-public
 ├── babel.config.js
 ├── LICENSE                                     //开源协议
@@ -80,6 +81,7 @@ unichat-app-public
 │   └── uview-ui                                //uview组件
 ├── tsconfig.json
 └── yarn.lock
+```
 
 ## 安装说明
 
